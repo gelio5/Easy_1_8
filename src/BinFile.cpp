@@ -4,10 +4,13 @@ void write(const std::string& fileName, std::vector<uint_fast8_t> writableData)
 {
     std::ofstream output;
     output.open(fileName, std::ios::binary);
+
     if (writableData.begin() == writableData.end())
         throw std::length_error("Writable data is empty");
+
     for (auto position : writableData)
         output.write((char *)(&position), sizeof(position));
+
     output.close();
 }
 
